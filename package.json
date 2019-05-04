@@ -1,0 +1,27 @@
+{
+  "name": "sendit",
+  "version": "1.0.0",
+  "description": "SendIT is a courier service that helps users deliver parcels to different destinations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoofNG/SendIT.git"
+  },
+  "keywords": [
+    "Courier",
+    "Service"
+  ],
+  "author": "Israel Akpan - KoogNG\u001b[D\u001b[f\u001b[C\u001b[C",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KoofNG/SendIT/issues"
+  },
+  "homepage": "https://github.com/KoofNG/SendIT#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.10.0"
+  }
+}
