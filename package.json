@@ -4,7 +4,9 @@
   "description": "SendIT is a courier service that helps users deliver parcels to different destinations.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --exec babel-node ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -14,18 +16,21 @@
     "Courier",
     "Service"
   ],
-  "author": "Israel Akpan - KoogNG\u001b[D\u001b[f\u001b[C\u001b[C",
+  "author": "Israel Akpan - KoofNG\u001b[D\u001b[f\u001b[C\u001b[C",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KoofNG/SendIT/issues"
   },
   "homepage": "https://github.com/KoofNG/SendIT#readme",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "pg": "^7.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
-    "@babel/node": "^7.2.2"
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4"
   }
 }
