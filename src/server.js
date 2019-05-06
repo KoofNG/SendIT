@@ -1,9 +1,8 @@
-// const http = require('http');
-// const dotEnv = require('dotenv').config();
+import { http } from 'http';
+import { dotEnv } from 'dotenv';
 
-import http from 'http';
-
-const server = http.createServer((req, res) => {
+const env = dotEnv.config();
+const server = http.createServer((req,res) => {
     res.end('Server created!');
 })
 
