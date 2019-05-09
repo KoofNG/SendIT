@@ -2,11 +2,11 @@
   "name": "sendit",
   "version": "1.0.0",
   "description": "SendIT is a courier service that helps users deliver parcels to different destinations.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "build": "nodemon ././dist/app.js",
     "start": "babel ./src --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "nodemon ./src/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
