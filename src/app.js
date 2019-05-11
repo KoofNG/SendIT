@@ -6,21 +6,20 @@ import cors from 'cors';
 import jsonwebtoken from 'jsonwebtoken';
 import jwt from 'express-jwt';
 
-
-
-// Connection to Database
-import pg from "pg";
+// Importing the various routes for each case scenarios;
+import parcels from './routes/parcel';
+import authorize from './routes/authorization';
 
 dotEnv.config();
 
-// Importing the various routes for each case scenarios;
-import parcels from './routes/parcel';
 
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/parcels', parcels);
+app.use('/auth', authorize);
 
 app.listen(process.env.PORT, () => console.log(`Server listening on ${process.env.PORT}`));
