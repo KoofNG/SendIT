@@ -1,9 +1,19 @@
 import router from '../controllers/routes';
+import client from '../controllers/dbConnector';
 
 const parcels = router;
 
 parcels.route("/")
     .get((req, res) => {
+        // Select for all delivery order as an admin
+        // As a single user selects all the delivery order of that user 
+        // Use the token generated to detect if admin or user
+        // if (tokenization id == admin) {SELECT * FROM parcels} else {SELECT * FROM parcels where userid = this current user}
+        client.query('SELECT * FROM users')
+            .then(data => {
+                console.table(data);
+            })
+            .catch(err => console.log(err));
         res.send("Fetch all parcel delivery orders.");
     })
     .post((req, res) => {
