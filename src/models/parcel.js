@@ -20,7 +20,7 @@ const parcel = {
     delieverdOn: {
         type: Date
     },
-    Status: {
+    status: {
         type: String
     },
     from: {
