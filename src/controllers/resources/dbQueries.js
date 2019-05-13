@@ -68,12 +68,10 @@ const dbQueries = {
     },
 
     // For Login
-    doLogin(req, res, next) {
-
+    doLogin(req, res) {
         if((req.body.email.length != 0 || req.body.username.length != 0) && req.body.password.length != 0){
             var savedUser;
-            var verifiedUser;
-            
+            var verifiedUser;            
             const text = 'SELECT * FROM users WHERE email = $1 OR username = $2';
             const values = [`${req.body.email}`,`${req.body.username}`];
 
@@ -108,7 +106,7 @@ const dbQueries = {
                     }
                 } else {
                     res.json({
-                        data: 'No such records exists'
+                        data: 'Records not found!'
                     })
                 }                              
             })
