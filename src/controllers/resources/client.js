@@ -5,9 +5,6 @@ dotEnv.config();
 
 const connectionString = "postgressql://koofng:0813@localhost:5432/sendIT";
 
-// ${process.env.PORT}
-console.log(process.env.key);
-
 const client = new Client({
   connectionString: connectionString
 });
@@ -16,10 +13,12 @@ client
   .connect()
   .then(res => {
     console.log(res);
+    console.log('Database connected guy');
     return true;
   })
   .catch(err => {
     console.log(err);
+    console.log('Database fucked you up!');
     return false;
   });
 
