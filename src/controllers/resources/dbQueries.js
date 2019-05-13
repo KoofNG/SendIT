@@ -57,21 +57,69 @@ const dbQueries = {
                         }],
                         message: "User created successfully"
                     });
-                    client.end();
                 })
                 .catch(err => console.error(err));
         } else {
             res.json({
                 status: 401,
-                message: "Fill in required fields"
+                message: "Provide data in the required fields"
+            });
+        }
+    },
+
+    // For Login
+    doLogin(req, res, next) {
+
+        if((req.body.email.length != 0 || req.body.username.length != 0) && req.body.password.length != 0){
+            var savedUser;
+            var verifiedUser;
+            
+            const text = 'SELECT * FROM users WHERE email = $1 OR username = $2';
+            const values = [`${req.body.email}`,`${req.body.username}`];
+
+            client.query(text,values)
+            .then(data => {
+                if (data.rows.length != 0) {
+                    verifiedUser = data.rows[0].password;
+                    const isCorrect = bcrypt.compareSync(req.body.password, verifiedUser);
+                    if (isCorrect) {
+                        savedUser = data.rows[0];
+                        var payload = new Payload(savedUser.firstname,savedUser.lastname,savedUser.email,savedUser.username);
+                        const token = jwt.sign(JSON.stringify(payload), "12345");
+                        res.json({
+                            status: 200,
+                            data : [{
+                                token : token,
+                                user: {
+                                    firstname : savedUser.firstname,
+                                    lastname: savedUser.lastname,
+                                    email: savedUser.email,
+                                    username : savedUser.username
+                                }
+                            }]
+                        })
+                    } else {
+                        res.json({
+                            status : 401,
+                            data : [{
+                                message : 'Incorrect Parameters'
+                            }]
+                        });
+                    }
+                } else {
+                    res.json({
+                        data: 'No such records exists'
+                    })
+                }                              
+            })
+        } else {
+            res.json({
+                status: 401,
+                message: "Provide data in the required fields"
             });
         }
     }
 
-    // For Login
-    // doLogin(req, res, next) {
-    //     const hashedPassword = ();
-    // }
 };
 
 export default dbQueries;
