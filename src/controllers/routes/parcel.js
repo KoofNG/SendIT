@@ -1,5 +1,4 @@
-import router from '../controllers/routes';
-import client from '../controllers/dbConnector';
+import router from '../resources/router';
 
 const parcels = router;
 

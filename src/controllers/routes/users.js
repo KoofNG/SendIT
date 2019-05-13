@@ -4,8 +4,8 @@ import dbQueries from '../resources/dbQueries';
 
 const user = router;
 
-user.post('/signup', doSignUp);
+user.post('/signup', dbQueries.doSignUp);
 
-user.post('/login', doLogin);
+user.post('/login', dbQueries.doLogin);
 
 export default user;
