@@ -1,14 +1,14 @@
-const user = {
-  id: { type: Number },
-  firstname: { type: String },
-  lastname: { type: String },
-  otherName: { type: String },
-  email: { type: String },
-  username: { type: String },
-  password: { type: String },
-  registered: { type: Date },
-  isAdmin: { type: Boolean }
-};
-
+class user {
+  constructor(firstname, lastname, othername, email, username, password, registered, isAdmin) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.othername = othername;
+    this.email = email;
+    this.username = username;
+    this.password = password;
+    this.registered = registered;
+    this.isAdmin = isAdmin;
+  }
+}
 
 export default user;
